@@ -1,0 +1,22 @@
+datasource pg {
+  provider = "sqlite"
+  url      = "file:demo.db"
+}
+
+generator photon {
+  provider = "photonjs"
+  output = "node_modules/@generated/photon"
+}
+
+model User {
+  id Int @id
+  email String @unique
+  name String
+  posts Post[]
+}
+
+model Post {
+  id Int @id
+  user User
+  title String
+}
